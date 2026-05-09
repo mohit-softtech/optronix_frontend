@@ -1,0 +1,286 @@
+/* ═══════════════════════════════════════════════════════════
+   Employee Attendance History — Premium UI Styles
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Summary Month Navigator ────────────────────────────── */
+.hist-summary-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.hist-month-nav {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.hist-month-nav:hover {
+  background: var(--bg-hover);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.hist-month-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  min-width: 180px;
+  text-align: center;
+}
+
+/* ─── Summary Stats Grid ─────────────────────────────────── */
+.hist-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.hist-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+
+.hist-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  transition: height var(--transition-base);
+}
+.hist-stat-card:hover::before {
+  height: 5px;
+}
+.hist-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-color-hover);
+}
+
+.hist-stat-primary::before  { background: var(--accent-primary); }
+.hist-stat-success::before  { background: var(--accent-success); }
+.hist-stat-warning::before  { background: var(--accent-warning); }
+.hist-stat-danger::before   { background: var(--accent-danger); }
+.hist-stat-info::before     { background: var(--accent-info); }
+.hist-stat-late::before     { background: linear-gradient(90deg, var(--accent-danger), #ff6b35); }
+
+.hist-stat-icon {
+  font-size: 1.5rem;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+.hist-stat-primary .hist-stat-icon  { color: var(--accent-primary); }
+.hist-stat-success .hist-stat-icon  { color: var(--accent-success); }
+.hist-stat-warning .hist-stat-icon  { color: var(--accent-warning); }
+.hist-stat-danger  .hist-stat-icon  { color: var(--accent-danger); }
+.hist-stat-info    .hist-stat-icon  { color: var(--accent-info); }
+
+.hist-stat-body {
+  min-width: 0;
+}
+
+.hist-stat-value {
+  font-size: 1.625rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.hist-stat-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+}
+
+/* ─── Skeleton loader for stats ─────────────────────────── */
+.hist-stat-skeleton {
+  flex: 1;
+  height: 82px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    90deg,
+    var(--bg-card) 0%,
+    var(--bg-hover) 50%,
+    var(--bg-card) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border: 1px solid var(--border-color);
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* ─── Filter Panel ───────────────────────────────────────── */
+.hist-filter-panel {
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hist-filter-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hist-filter-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-bottom: 2px;
+}
+
+.hist-filter-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 0 -4px;
+}
+
+/* ─── Quick preset buttons ───────────────────────────────── */
+.hist-preset-btn {
+  padding: 7px 16px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-family);
+  white-space: nowrap;
+}
+.hist-preset-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-color-hover);
+}
+.hist-preset-btn.active {
+  background: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
+  box-shadow: 0 2px 10px var(--accent-primary-glow);
+}
+
+/* ─── Active filter tags ─────────────────────────────────── */
+.hist-active-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.hist-filter-tag {
+  padding: 4px 12px;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+}
+
+/* ─── Table header row (count + export) ─────────────────── */
+.hist-table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ─── Table row hover effect ─────────────────────────────── */
+.hist-table-row {
+  transition: background var(--transition-fast);
+}
+.hist-table-row:hover td {
+  background: rgba(99, 102, 241, 0.04);
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .hist-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .hist-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hist-filter-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hist-filter-controls .form-group {
+    min-width: unset !important;
+    flex: unset !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hist-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hist-filter-panel {
+    padding: 16px;
+  }
+  .hist-month-label {
+    min-width: 140px;
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hist-stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hist-stat-card {
+    padding: 14px 12px;
+    gap: 10px;
+  }
+  .hist-stat-value {
+    font-size: 1.375rem;
+  }
+}
